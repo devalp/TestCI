@@ -31,11 +31,11 @@ test_script:
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '{version}{version_suffix}'
-  package_version: '{version}{version_suffix}'
+  version: '{version}$(version_suffix)'
+  package_version: '{version}$(version_suffix)'
   assembly_version: '{version}'
   file_version: '{version}'
-  informational_version: '{version}{version_suffix}'
+  informational_version: '{version}$(version_suffix)'
 
 # start to override common configuration
 for:
