@@ -16,6 +16,5 @@ if(Test-Path .\artifacts) { Remove-Item .\artifacts -Force -Recurse }
 
 exec { & dotnet restore }
 
-$version = $env:APPVEYOR_BUILD_VERSION
-
-exec { & dotnet pack ".\TestCI\TestCI.csproj" -c Release -o ..\artifacts /p:PackageVersion=$version }  
+# PackageVersion set by appveyor.yml csproj patching
+exec { & dotnet pack ".\TestCI\TestCI.csproj" -c Release -o ..\artifacts }  
