@@ -2,7 +2,7 @@
 
 environment:
   version_number: '0.9.0'
-version: '$(version_number)-beta{build}'
+version: '$(version_number)'
 
 # use VS2017
 image: Visual Studio 2017
@@ -45,7 +45,7 @@ for:
   branches:  
     only:
     - develop
-  # override version on develop to also include branch
+  # use unique version when running tests from develop
   version: '$(version_number)-develop{build}'
   # no builds on develop, only tests
   build: off
