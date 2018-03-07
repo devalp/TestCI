@@ -29,7 +29,7 @@ test_script:
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '{version}'
+  #version: '{version}'
   package_version: '{version}'
   assembly_version: '{version}'
   file_version: '{version}'
