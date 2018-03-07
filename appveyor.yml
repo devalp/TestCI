@@ -1,20 +1,39 @@
 # common configuration for ALL branches
 
-version: '0.9.{build}-beta'  
+version: '0.9.{build}-beta'
+
+# use VS2017
 image: Visual Studio 2017
+
+# Pull Requests do not increment build number
 pull_requests:  
   do_not_increment_build_number: true
+
+# branches whitelist
 branches:  
   only:
   - develop
   - master
+
+# Do not publish NuGet package artifacts to account/project feeds on Pull Requests
 nuget:  
   disable_publish_on_pr: true
+
+# tests
 test_script:
 - cmd: cd TestCI.Tests
 - cmd: dotnet restore
 - cmd: dotnet xunit -c Release --fx-version 2.0.0
-configuration: Release
+
+# patch version for .NET Core
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 
 # start to override common configuration
 for:

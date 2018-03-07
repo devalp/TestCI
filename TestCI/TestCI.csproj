@@ -4,7 +4,7 @@
     <AssemblyTitle>TestCI</AssemblyTitle>
     <Description>TestCI</Description>
     <Product>TestCI</Product>
-    <VersionPrefix>0.1.0-beta</VersionPrefix>
+    <VersionPrefix>1.0</VersionPrefix>
     <Copyright>2018 Devalp LLC</Copyright>
     <RootNamespace>TestCI</RootNamespace>
     <OutputType>Library</OutputType>
