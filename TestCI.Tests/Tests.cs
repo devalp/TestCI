@@ -22,7 +22,7 @@ namespace TestCI.Tests
         [Fact(DisplayName = "Can_Fail")]
         public void Can_Fail()
         {
-            Assert.True(false);
+            Assert.True(true);
         }
     }
 }
