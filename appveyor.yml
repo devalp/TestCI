@@ -1,6 +1,8 @@
 # common configuration for ALL branches
 
-version: '0.9.0-beta{build}'
+version: '0.9.0'
+environment:
+  version_suffix: '-beta{build}'
 
 # use VS2017
 image: Visual Studio 2017
@@ -29,11 +31,11 @@ test_script:
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
+  version: '{version}{version_suffix}'
+  package_version: '{version}{version_suffix}'
   assembly_version: '{version}'
   file_version: '{version}'
-  informational_version: '{version}'
+  informational_version: '{version}{version_suffix}'
 
 # start to override common configuration
 for:
