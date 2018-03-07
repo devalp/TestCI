@@ -45,6 +45,8 @@ for:
   branches:  
     only:
     - develop
+  # override version on develop to also include branch
+  version: '$(version_number)-develop{build}'
   # no builds on develop, only tests
   build: off
 
