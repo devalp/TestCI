@@ -10,13 +10,13 @@ branches:
   - master
 nuget:  
   disable_publish_on_pr: true
+configuration: Release
 build_script:  
 - ps: .\build.ps1
 test_script:
 - cmd: dotnet restore ".\TestCI.Tests\TestCI.Tests.csproj" --verbosity m
 - cmd: cd TestCI.Tests
 - cmd: dotnet xunit -c Release --fx-version 2.0.0
-configuration: Release
 
 # here we are going to override common configuration
 for:
