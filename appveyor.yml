@@ -10,28 +10,35 @@ branches:
   - master
 nuget:  
   disable_publish_on_pr: true
-build_script:  
-- ps: .\build.ps1
 test_script:
-- cmd: dotnet restore ".\TestCI.Tests\TestCI.Tests.csproj" --verbosity m
 - cmd: cd TestCI.Tests
+- cmd: dotnet restore
 - cmd: dotnet xunit -c Release --fx-version 2.0.0
 configuration: Release
 
-# here we are going to override common configuration
+# start to override common configuration
 for:
 
+# override settings for `develop` branch
+-
+  branches:  
+    only:
+    - develop
+  # no builds on develop, only tests
+  build: off
+
 # override settings for `master` branch
-# build and publish to MyGet on master commit
-# build and publish to NuGet on master tag
 -
   branches:  
     only:
     - master
+  build_script:  
+  - ps: .\build.ps1
   artifacts:  
   - path: .\artifacts\**\*.nupkg
     name: NuGet
   deploy:  
+  # deploy to MyGet on master commit
   - provider: NuGet
     server: https://www.myget.org/F/devalp/api/v2/package
     api_key:
@@ -39,6 +46,7 @@ for:
     skip_symbols: true
     on:
       branch: master
+  # deploy to NuGet on master tag
   - provider: NuGet
     name: production
     api_key:
