@@ -1,3 +1,5 @@
+# common configuration for ALL branches
+
 version: '0.9.{build}-beta'  
 image: Visual Studio 2017
 pull_requests:  
@@ -12,7 +14,13 @@ test_script:
 - cmd: dotnet restore ./TestCI.Tests/TestCI.Tests.csproj --verbosity m
 - cmd: cd TestCI.Tests
 - cmd: dotnet xunit -c Release --fx-version 2.0.0
+
+# here we are going to override common configuration
+for:
+
 # override settings for `master` branch
+# build and publish to MyGet on master commit
+# build and publish to NuGet on master tag
 -
   branches:  
     only:
